@@ -11,7 +11,7 @@ stage ('Build') {
     checkout scm
 
     // install required bundles
-    sh 'bundle install'
+//    sh 'bundle install'
 
     sh 'bundle exec rake build spec'
 
