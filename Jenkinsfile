@@ -12,5 +12,19 @@ stage ('Build') {
 
     // install required bundles
     sh 'bundle install'
+
+    sh 'bundle exec rake build spec'
+
+    archive (includes: 'pkg/*.gem')
+
+
+publishHTML(target: [	allowMissing: false, 
+			alwaysLinkToLastBuild: false, 
+			keepAll: true, 
+			reportDir: 'coverage', 
+			reportFiles: 'index.html', 
+			reportName: 'RCovReport', 
+			reportTitles: '', 
+			useWrapperFileDirectly: true])
 } }
    
